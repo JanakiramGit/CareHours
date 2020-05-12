@@ -1,0 +1,59 @@
+<html>
+
+<head>
+<style type="text/css">
+th, td {
+	color: white
+}
+</style>
+
+</head>
+
+<body>
+	<div th:replace="header :: header"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card bg-dark my-5">
+					<div class="card-body">
+						<div th:switch="${students}">
+							<h2 class="card-title text-center text-white" th:case="null">Students
+								List</h2>
+							<div th:case="*">
+								<h2 class="card-title text-center text-white">Students List</h2>
+								<table>
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Edit</th>
+											<th>Delete</th>
+											<th>Hours</th>
+											<th>View</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="student : ${students}">
+											<td th:text="${student.name}"></td>
+
+											<td><a class="btn btn-info" th:href="@{/edit/{id}(id=${student.id})}">Edit</a></td>
+											<td><a class="btn btn-info" th:href="@{/addhours/{id}(id=${student.id})}">Add Hours</a></td>
+											<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>
+											<td><a class="btn btn-info" th:href="@{/view/{id}(id=${student.id})}">View</a></td>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+							<div align="center">
+								<a class="btn btn-info" href="/signup">Add a new student</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+	<style type="text/css">
+		th, td {
+			color: white
+		}
+	</style>
+</head>
+
+<body>
+	<div th:replace="header :: header"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card bg-dark my-5">
+					<div class="card-body">
+						<h2 class="card-title text-center text-white">View Student</h2>
+						<form action="#" th:action="@{/update/{id}(id=${student.id})}"
+							th:object="${student}" method="post">
+							
+							<label class="text-white" th:text="${student.name}"/>							
+							
+							<table>
+							
+								<tr>
+									<th>Date</th>
+									<th>Hours</th>
+								</tr>
+								<tr th:each="stutentHours: ${student.studentHours}">
+								    <td th:text="${stutentHours.date}" />
+								    <td th:text="${stutentHours.hours}" />
+								</tr>
+							</table>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+</body>
+</html>

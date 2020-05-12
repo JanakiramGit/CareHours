@@ -1,0 +1,34 @@
+
+<html>
+
+<header></header>
+
+<body>
+	<div th:replace="header :: header"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card bg-dark my-5">
+					<div class="card-body">
+						<h2 class="card-title text-center text-white" >Add new Student</h2>
+						<form action="#" th:action="@{/addstudent}" th:object="${student}"
+							method="post">
+							
+								<div class="form-group" align="center">
+									<label for="name" class="text-white">Name</label>
+									<input type="text" th:field="*{name}" id="name" placeholder="Name">
+									<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+									
+									<td colspan="2" align="center"><input type="submit" class="btn btn-md btn-info" value="Add User"></td>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
