@@ -1,14 +1,19 @@
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
+	<meta charset="UTF-8"/>
+    <title></title>
+
+    <link th:rel="stylesheet" th:href="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
 	
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-		crossorigin="anonymous" />
-		
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-	
+	<style type="text/css">
+	div {
+		color: white
+	}
+</style>
 </head>
 
 <body>
@@ -19,30 +24,67 @@
 			<div class="col-md-12">
 				<div class="card bg-dark my-5">
 					<div class="card-body">
-						<h2 class="card-title text-center text-white">Add hours for <label th:text="${student.name}"/></h2>
-						<form action="#" th:action="@{/update/{id}(id=${student.id})}"
-							th:object="${student}" method="post">
+						<h2 class="card-title text-center text-white">Add hour</h2>
+<!-- 						s for <label th:text="${studentHours.student.name}"/> -->
+						<form action="#" th:action="@{/addhours/{id}(id=${studentHours.student.id})}"
+							th:object="${studentHours}" method="post">
 
-							<div class="form-group" align="center">
+<!-- 							<form action="#" th:action="@{/addstudenthours/{id}(id=${student.id})}" -->
+<!-- 							th:object="${student}" method="post"> -->
+							<div class="form-group" align="center">				
 								
-								<label th:text="${student.name}"/>
+								<div class="form-group">
+									<label for="hours">Hours</label>
+<!-- 									<input type="text" id="hours" placeholder="Hours"/> -->
+									<input type="text" th:field="*{hours}" id="hours" placeholder="Hours">
 								
-								<label for="${student.studentHours}">Hours</label>
-								<input type="text" id="studentHours.hours" placeholder="Hours"/>
+				                    <label for="date">Date:</label>
+				                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+				                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+				                               th:field="*{date}" id="date" placeholder="Date"/>
+				                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+				                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+				                        </div>
+				                    </div>
+				                </div>										
 								
-								<label for="${studentHours.date">Date</label>
-																
-									
-								<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-
-								<td colspan="2" align="center"><input type="submit"
-									class="btn btn-md btn-info" value="Add Hours"></td>
+								<td colspan="2" align="center"><input type="submit" class="btn btn-md btn-info" value="Add Hours"></td>
 							</div>
 						</form>
 					</div>
+					
+	
+					
+					
 				</div>
 			</div>
 		</div>
 		</div>
+		
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/assets/moment/moment.min.js}"></script>
+<script th:src="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js}"></script>
+
+<script>
+    $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+        icons: {
+            time: 'far fa-clock',
+            date: 'far fa-calendar',
+            up: 'fas fa-arrow-up',
+            down: 'fas fa-arrow-down',
+            previous: 'fas fa-chevron-left',
+            next: 'fas fa-chevron-right',
+            today: 'far fa-calendar-check-o',
+            clear: 'far fa-trash',
+            close: 'far fa-times'
+        } });
+
+    $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY h:mm A'
+    });
+</script>
+
 </body>
 </html>

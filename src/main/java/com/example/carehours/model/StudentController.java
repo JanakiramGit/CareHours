@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 @Controller
 public class StudentController {
 	
 	@Autowired
 	StudentRepository studentRepo;
+	
+	@Autowired
+	StudentHours studentHours;
 
 	@GetMapping("/")
     public String home(Model model) {
@@ -47,15 +51,7 @@ public class StudentController {
         return "update-student";
     }
     
-    @GetMapping("/addhours/{id}")
-    public String showAddHoursForm(@PathVariable("id") long id, Model model) {
-        Student student = studentRepo.findById(id)
-          .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
-         
-        model.addAttribute("student", student);
-        return "add-hours";
-    }
- 
+
     @PostMapping("/update/{id}")
     public String updateStudent(@PathVariable("id") long id, @Valid Student student, 
       BindingResult result, Model model) {
