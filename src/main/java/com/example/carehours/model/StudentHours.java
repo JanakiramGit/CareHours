@@ -8,17 +8,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.stereotype.Component;
 
 @Entity
+@Component
 public class StudentHours {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long hoursId;
-	@NotBlank(message="Hours can't be blank")
+	@NotNull(message="Hours can't be blank")
 	private double hours;
-	private Date date;
+	private Date date = new Date();
 	
 	@ManyToOne
 	@JoinColumn(name="student_id", nullable = false)
@@ -66,8 +69,6 @@ public class StudentHours {
 
 	public void setStudent(Student student) {
 		this.student = student;
-	}
-	
-	
+	}	
 	
 }
