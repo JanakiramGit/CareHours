@@ -10,10 +10,10 @@
     <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
 	
 	<style type="text/css">
-	div {
-		color: white
-	}
-</style>
+		div {
+			color: white
+		}
+	</style>
 </head>
 
 <body>
@@ -24,18 +24,14 @@
 			<div class="col-md-12">
 				<div class="card bg-dark my-5">
 					<div class="card-body">
-						<h2 class="card-title text-center text-white">Add hour</h2>
-<!-- 						s for <label th:text="${studentHours.student.name}"/> -->
+						<h2 class="card-title text-center text-white">Add hours</h2>
+
 						<form action="#" th:action="@{/addhours/{id}(id=${studentHours.student.id})}"
 							th:object="${studentHours}" method="post">
-
-<!-- 							<form action="#" th:action="@{/addstudenthours/{id}(id=${student.id})}" -->
-<!-- 							th:object="${student}" method="post"> -->
 							<div class="form-group" align="center">				
 								
 								<div class="form-group">
 									<label for="hours">Hours</label>
-<!-- 									<input type="text" id="hours" placeholder="Hours"/> -->
 									<input type="text" th:field="*{hours}" id="hours" placeholder="Hours">
 								
 				                    <label for="date">Date:</label>
@@ -46,15 +42,12 @@
 				                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
 				                        </div>
 				                    </div>
-				                </div>										
+				                </div>	
 								
 								<td colspan="2" align="center"><input type="submit" class="btn btn-md btn-info" value="Add Hours"></td>
 							</div>
 						</form>
-					</div>
-					
-	
-					
+					</div>					
 					
 				</div>
 			</div>
@@ -81,9 +74,20 @@
             close: 'far fa-times'
         } });
 
+    /* $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY',
+        useCurrent: true
+    }); */
+    
     $('#datetimepicker1').datetimepicker({
-        format: 'DD/MM/YYYY h:mm A'
-    });
+    	   format: 'dd/mm/yyyy',
+    	   useCurrent: false,
+    	   locale: 'en_au'
+    	   }).on('dp.show', function() {
+    	   if($(this).data("DateTimePicker").date() === null)
+    	     $(this).data("DateTimePicker").date(moment());
+    	   });
+    	});
 </script>
 
 </body>

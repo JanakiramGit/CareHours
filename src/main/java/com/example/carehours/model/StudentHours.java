@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -21,7 +22,7 @@ public class StudentHours {
 	private long hoursId;
 	@NotNull(message="Hours can't be blank")
 	private double hours;
-	private Date date = new Date();
+	private Date date;
 	
 	@ManyToOne
 	@JoinColumn(name="student_id", nullable = false)
@@ -55,10 +56,12 @@ public class StudentHours {
 		this.hours = hours;
 	}
 
+	@DateTimeFormat(pattern="dd/MM/YYYY")
 	public Date getDate() {
 		return date;
 	}
 
+	@DateTimeFormat(pattern="dd/MM/YYYY")
 	public void setDate(Date date) {
 		this.date = date;
 	}
