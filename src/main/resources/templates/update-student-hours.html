@@ -31,9 +31,9 @@
 			<div class="col-md-12">
 				<div class="card bg-dark my-5">
 					<div class="card-body">
-						<h2 class="card-title text-center text-white">Add hours for: <label class="text-white" th:text="${studentHours.student.name}"/></h2>
+						<h2 class="card-title text-center text-white">Update hours for: <label class="text-white" th:text="${studentHours.student.name}"/></h2>
 
-						<form action="#" th:action="@{/addhours/{id}(id=${studentHours.student.id})}"
+						<form action="#" th:action="@{/updatehours/{hoursid}/{studentid}(hoursid=${studentHours.hoursId},studentid=${studentHours.student.id})}"
 							th:object="${studentHours}" method="post">
 							<div class="form-group" align="center">				
 								
@@ -45,11 +45,11 @@
 				                    <label for="date">Date:</label>
 				                    <input type="text" th:field="*{date}" id="date" placeholder="Date"/>
 				                    <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>                 
-				                    
+				                    <input type="hidden" th:field="*{hoursId}">
 
 								</div>
 								
-								<td colspan="2" align="center"><input type="submit" class="btn btn-md btn-info" value="Add Hours"></td>
+								<td colspan="2" align="center"><input type="submit" class="btn btn-md btn-info" value="Update Hours"></td>
 							</div>
 						</form>
 					</div>					

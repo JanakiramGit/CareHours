@@ -2,9 +2,9 @@
 
 <head>
 	<style type="text/css">
-		th, td {
-			color: white
-		}
+/* 		th, td { */
+/* 			color: white */
+/* 		} */
 	</style>
 </head>
 
@@ -16,22 +16,30 @@
 			<div class="col-md-12">
 				<div class="card bg-dark my-5">
 					<div class="card-body">
-						<h2 class="card-title text-center text-white">View Student</h2>
+						<h2 class="card-title text-center text-white">View Student <label class="text-white" th:text="${student.name}"/></h2>
+					</div>
+				</div>
+				
+				<div class="card bg-light my-5">
+					<div class="card-body">
 						<form action="#" th:action="@{/update/{id}(id=${student.id})}"
-							th:object="${student}" method="post">
+							th:object="${student}" method="post">										
 							
-							<label class="text-white" th:text="${student.name}"/>							
-							
-							<table>
-							
+							<table class="table table-striped">
+								<thead>
 								<tr>
 									<th>Date</th>
 									<th>Hours</th>
+									<th>Edit</th>
 								</tr>
+								</thead>
+								<tbody>
 								<tr th:each="studentHours: ${student.studentHours}">
 								    <td th:text="${studentHours.date}" />
 								    <td th:text="${studentHours.hours}" />
+								    <td><a class="btn btn-info" th:href="@{/edithours/{hoursid}(hoursid=${studentHours.hoursId})}">Edit Hours</a></td>
 								</tr>
+								<tbody>
 							</table>
 
 						</form>
