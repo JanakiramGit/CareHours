@@ -24,8 +24,7 @@ public class StudentHoursController {
 	private StudentHours studentHours;
 	
 	@PostMapping("/addhours/{id}")
-    public String addHours(@PathVariable("id") Long id,
-                                 @Valid StudentHours studentHours, Model model) {
+    public String addHours(@PathVariable("id") Long id, @Valid StudentHours studentHours, Model model) {
         return studentRepo.findById(id).map(student -> {
         	studentHours.setStudent(student);
             hoursRepo.save(studentHours);

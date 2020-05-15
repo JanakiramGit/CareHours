@@ -29,7 +29,7 @@
 									<th>Hours</th>
 								</tr>
 								<tr th:each="studentHours: ${student.studentHours}">
-								    <td th:text="${#dates.format(studentHours.date, 'dd/MM/yyyy')}" />
+								    <td th:text="${studentHours.date}" />
 								    <td th:text="${studentHours.hours}" />
 								</tr>
 							</table>
