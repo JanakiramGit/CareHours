@@ -24,21 +24,20 @@ public class StudentHoursController {
 	private StudentHours studentHours;
 	
 	@PostMapping("/addhours/{id}")
-    public String addHours(@PathVariable (value = "id") Long id,
-                                 @Valid StudentHours studentHours, Model model) {
+    public String addHours(@PathVariable("id") Long id, @Valid StudentHours studentHours, Model model) {
         return studentRepo.findById(id).map(student -> {
         	studentHours.setStudent(student);
             hoursRepo.save(studentHours);
             model.addAttribute("students", studentRepo.findAll());
             
             return "index";
-        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + id + " not found"));
+        }).orElseThrow(() -> new ResourceNotFoundException("Student Id " + id + " not found"));
     }
 	
 	@GetMapping("/addhours/{id}")
     public String showAddHoursForm(@PathVariable("id") long id, Model model) {
         Student student = studentRepo.findById(id)
-          .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
+          .orElseThrow(() -> new IllegalArgumentException("Invalid Student Id:" + id));
         
         studentHours.setStudent(student);
         model.addAttribute("studentHours", studentHours);

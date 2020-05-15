@@ -28,9 +28,9 @@
 									<th>Date</th>
 									<th>Hours</th>
 								</tr>
-								<tr th:each="stutentHours: ${student.studentHours}">
-								    <td th:text="${stutentHours.date}" />
-								    <td th:text="${stutentHours.hours}" />
+								<tr th:each="studentHours: ${student.studentHours}">
+								    <td th:text="${studentHours.date}" />
+								    <td th:text="${studentHours.hours}" />
 								</tr>
 							</table>
 

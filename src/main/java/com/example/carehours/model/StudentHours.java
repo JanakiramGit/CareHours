@@ -1,13 +1,12 @@
 package com.example.carehours.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
@@ -21,7 +20,8 @@ public class StudentHours {
 	private long hoursId;
 	@NotNull(message="Hours can't be blank")
 	private double hours;
-	private Date date = new Date();
+	@NotBlank(message="Date can't be blank")
+	private String date;
 	
 	@ManyToOne
 	@JoinColumn(name="student_id", nullable = false)
@@ -31,7 +31,7 @@ public class StudentHours {
 		// TODO Auto-generated constructor stub
 	}
 
-	public StudentHours(long hoursId, double hours, Date date, Student student) {
+	public StudentHours(long hoursId, double hours, String date, Student student) {
 		super();
 		this.hoursId = hoursId;
 		this.hours = hours;
@@ -55,11 +55,11 @@ public class StudentHours {
 		this.hours = hours;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
