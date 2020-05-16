@@ -71,5 +71,18 @@ public class StudentHoursController {
         model.addAttribute("student", student);
         return "view-student";
     }
+	
+	@GetMapping("/deletehours/{hoursid}")
+    public String deleteStudent(@PathVariable("hoursid") long hoursid, Model model) {
+        StudentHours studentHours = hoursRepo.findById(hoursid)
+          .orElseThrow(() -> new IllegalArgumentException("Invalid student hours Id:" + hoursid));
+        hoursRepo.delete(studentHours);
+        
+        Student student = studentRepo.findById(studentHours.getStudent().getId())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Student Id:" + studentHours.getStudent().getId()));
+
+        model.addAttribute("student", student);
+        return "view-student";
+    }
 
 }

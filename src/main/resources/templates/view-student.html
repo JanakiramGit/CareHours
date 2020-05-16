@@ -17,6 +17,9 @@
 				<div class="card bg-dark my-5">
 					<div class="card-body">
 						<h2 class="card-title text-center text-white">View Student <label class="text-white" th:text="${student.name}"/></h2>
+						<div align="center">
+							<a class="btn btn-info" th:href="@{/addhours/{id}(id=${student.id})}">Add Hours</a>
+						</div>
 					</div>
 				</div>
 				
@@ -31,6 +34,7 @@
 									<th>Date</th>
 									<th>Hours</th>
 									<th>Edit</th>
+									<th>Delete</th>
 								</tr>
 								</thead>
 								<tbody>
@@ -38,6 +42,7 @@
 								    <td th:text="${studentHours.date}" />
 								    <td th:text="${studentHours.hours}" />
 								    <td><a class="btn btn-info" th:href="@{/edithours/{hoursid}(hoursid=${studentHours.hoursId})}">Edit Hours</a></td>
+								    <td><a class="btn btn-danger" th:href="@{/deletehours/{hoursid}(hoursid=${studentHours.hoursId})}">Delete Hours</a></td>
 								</tr>
 								<tbody>
 							</table>
