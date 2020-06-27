@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Care Hours Login</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	
+	<div class="container">	
+		<div class="row">
+		
+			<div class="col-md-6 col-md-offset-3">				
+				
+				<!-- Error message -->
+				
+				<div th:if="${param.error}">			
+					<div class="alert alert-danger">Invalide user name or password</div>			
+				</div>
+				
+				<!-- Logout nessage -->
+				
+				<div th:if="${param.logout}">			
+					<div class="alert alert-info">You have been successfully logged out!</div>			
+				</div>
+				
+				<h2>Login</h2>
+				
+				<form method="post" th:action="@{/login}">
+					
+				
+					<div class="form-group">				
+						<label for="username">User Name: </label>
+						<input type="text" class="form-control" id="username" name="username" required="required"
+							placeholder="User Name" autofocus="autofocus"/>					
+					</div>
+					
+					<div class="form-group">				
+						<label for="username">Password: </label>
+						<input type="password" class="form-control" id="password" name="password" required="required"
+							placeholder="Password" autofocus="autofocus"/>					
+					</div>
+					
+					<div class="form-group">
+						<button type="submit" class="btn btn-info">Login</button>
+						<span>
+							New User? <a th:href="@{/registration}">Register here</a>
+						</span>
+					</div>
+
+				</form>				
+				
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
