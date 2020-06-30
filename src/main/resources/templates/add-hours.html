@@ -39,11 +39,11 @@
 								
 								<div class="form-group">
 									<label for="hours">Hours</label>
-									<input type="text" th:field="*{hours}" id="hours" placeholder="Hours">
+									<input type="text" th:field="*{hours}" id="hours" placeholder="Hours" required="required">
 									<span th:if="${#fields.hasErrors('hours')}" th:errors="*{hours}"></span>
 									
 				                    <label for="date">Date:</label>
-				                    <input type="text" th:field="*{date}" id="date" placeholder="Date"/>
+				                    <input type="text" th:field="*{date}" id="date" placeholder="Date" required="required"/>
 				                    <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>                 
 				                    
 

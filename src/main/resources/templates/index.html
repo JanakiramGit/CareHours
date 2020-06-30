@@ -36,7 +36,10 @@
 											<th>Hours</th>
 											<th>View</th>
 											<th>Edit</th>
-											<th>Delete</th>
+											<div sec:authorize="hasRole('ADMIN')">
+												<th>Delete</th>
+											</div>
+											
 										</tr>
 									</thead>
 									<tbody>
@@ -45,7 +48,14 @@
 											<td><a class="btn btn-info" th:href="@{/addhours/{id}(id=${student.id})}">Add Hours</a></td>											
 											<td><a class="btn btn-info" th:href="@{/view/{id}(id=${student.id})}">View</a></td>
 											<td><a class="btn btn-info" th:href="@{/edit/{id}(id=${student.id})}">Edit</a></td>
-											<td><a class="btn btn-danger disabled" th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>
+											<div sec:authorize="hasRole('ADMIN')">
+												<td><a class="btn btn-danger" th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>
+											</div>
+<!-- 											<div sec:authorize="hasRole('USER')"> -->
+<!-- 												<td><a class="btn btn-danger disabled" th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td> -->
+<!-- 											</div> -->
+
+											
 										</tr>
 									</tbody>
 								</table>

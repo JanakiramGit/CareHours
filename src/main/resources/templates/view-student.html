@@ -17,7 +17,11 @@
 				<div class="card bg-dark my-5">
 					<div class="card-body">
 						<h2 class="card-title text-center text-white">View Student <label class="text-white" th:text="${student.name}"/></h2>
+						<div align="center">						
+							<a class="btn btn-info" th:href="@{/addhours/{id}(id=${student.id})}">Add Hours</a>
+						</div>
 					</div>
+					
 				</div>
 				
 				<div class="card bg-light my-5">
